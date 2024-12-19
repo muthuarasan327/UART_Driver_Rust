@@ -1,0 +1,26 @@
+[package]
+name = "Uart_Driver"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+cortex-m-rtic = "1.1"
+cortex-m-rt = "0.6.15"
+cortex-m = "0.7"
+panic-halt = "0.2"   # Panic handler for no_std
+stm32f4xx-hal = { version = "0.9.0", features = ["stm32f410"] }
+embedded-hal = "0.2"  # Provides embedded hardware abstraction layer
+probe-rs = "0.11"    # For flashing and debugging
+stable_deref_trait = { version = "1.2", default-features = false }
+
+
+
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
+[build]
+target = "thumbv7em-none-eabihf"  # Target for STM32F4
